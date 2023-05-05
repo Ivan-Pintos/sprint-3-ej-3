@@ -33,5 +33,6 @@ module.exports = (app) => {
   app.use("/comentarios", commentRoutes);
 
   app.use("/", publicRoutes);
+  app.use("/admin", publicRoutes);
   app.use("/panel", privateRoutes);
 };

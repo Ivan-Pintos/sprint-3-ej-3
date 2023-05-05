@@ -21,8 +21,10 @@ async function update(req, res) {}
 // Remove the specified resource from storage.
 async function destroy(req, res) {}
 
-// Otros handlers...
-// ...
+async function showAdmin(req, res) {
+  const articles = await Article.findAll();
+  return res.render("admin", { articles });
+}
 
 module.exports = {
   index,
@@ -32,4 +34,5 @@ module.exports = {
   edit,
   update,
   destroy,
+  showAdmin,
 };
