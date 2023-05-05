@@ -1,3 +1,4 @@
-body {
-    background-color: red;
+.hero-content {
+    background-image: url("../img/bg_image_home.png");
+    padding: 10px;
 }
