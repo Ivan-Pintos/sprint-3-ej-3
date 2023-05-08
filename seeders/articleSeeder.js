@@ -22,7 +22,6 @@ faker.locale = "es";
 
 module.exports = async () => {
   const articles = [];
-
   for (let i = 0; i < 50; i++) {
     articles.push({
       title: faker.lorem.sentence(5),
