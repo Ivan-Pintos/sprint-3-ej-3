@@ -32,7 +32,6 @@ Comment.belongsTo(Article);
 
 module.exports = {
   sequelize,
-
   Comment,
   Article,
   Author,
