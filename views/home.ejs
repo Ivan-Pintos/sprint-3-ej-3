@@ -24,14 +24,19 @@
 
           <h2>El blog de Hack Academy</h2>
         </div>
-        <% for (const article of articles) {%>
+
+        <% const primerosCuatro = articles.slice(0, 4); %> <% for (const article of primerosCuatro)
+        {%>
         <div class="col-6 mx-auto p-3">
           <a class="text-decoration-none" href="https://">
             <h3 class="text-dark"><%= article.title %></h3>
             <p class="text-muted">
-              <%= `Creado por ${article.author.firstname} el ${article.createdAt}` %>
+              <%= `Creado por ${article.author.firstname} el
+              ${article.createdAt.toLocaleDateString("es-AR", { day: 'numeric', month: 'long', year:
+              'numeric',})}` %>
             </p>
           </a>
+          <hr />
         </div>
         <%}%>
       </section>
