@@ -22,7 +22,9 @@ async function update(req, res) {}
 async function destroy(req, res) {}
 
 async function showAdmin(req, res) {
-  const articles = await Article.findAll();
+  const articles = await Article.findAll({
+    order: [["createdAd", "DESC"]],
+  });
   return res.render("admin", { articles });
 }
 
