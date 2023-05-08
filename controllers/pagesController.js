@@ -31,6 +31,11 @@ async function showAboutUs(req, res) {
   res.render("aboutUs");
 }
 
+async function showArticle(req, res) {
+  const articles = await Article.findByPk();
+  res.render("article", { articles });
+}
+
 // Otros handlers...
 // ...
 
@@ -38,4 +43,5 @@ module.exports = {
   showHome,
   showContact,
   showAboutUs,
+  showArticle,
 };
