@@ -18,6 +18,8 @@ require("dotenv").config();
 
 async function runAllSeeders() {
   await require("./articleSeeder")();
+  await require("./authorSeeder")();
+  await require("./commentSeeder")();
 
   /**
    * Aquí se pueden ejectuar otros seeders que hayan en el sistema.
