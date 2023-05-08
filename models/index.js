@@ -30,6 +30,7 @@ Article.belongsTo(Author);
 Article.hasMany(Comment);
 Comment.belongsTo(Article);
 
+
 module.exports = {
   sequelize,
   Comment,

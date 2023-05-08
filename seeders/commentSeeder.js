@@ -12,12 +12,12 @@ module.exports = async () => {
 
     comments.push({
       comment: faker.lorem.paragraphs(2),
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
+      firstname: faker.name.firstName(),
+      lastname: faker.name.lastName(),
       articleId: randomArticle.id,
     });
   }
 
   await Comment.bulkCreate(comments);
-  console.log("[Database] Se corrió el seeder de Coments.");
+  console.log("[Database] Se corrió el seeder de Comments.");
 };
