@@ -12,5 +12,6 @@ router.get("/:id", articleController.show);
 router.get("/:id/editar", articleController.edit);
 router.patch("/:id", articleController.update);
 router.delete("/:id", articleController.destroy);
+router.get("/articulos", articleController.show)
 
 module.exports = router;
