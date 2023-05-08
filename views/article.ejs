@@ -12,13 +12,13 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    
   </head>
   <body>
     <div class="fixed-top"><%- include("partials/navbar")%></div>
     <div
       id="articulosBackground"
-      class="bg-image d-flex flex-column justify-content-center align-items-center hero-content">
+      class="bg-image d-flex flex-column justify-content-center align-items-center hero-content"
+    >
       <h1 class="text-white text-center"><%= article.title %></h1>
       <small class="text-white">
         <%=` Creado por ${article.author.firstname} el
@@ -32,7 +32,7 @@
         <div class="col-8 col-mb-4 mx-auto">
           <p><%=article.content %>></p>
           <hr />
-          <form class="shadow p-2 rounded" method="post" action="/comentarios">
+          <form class="shadow p-2 rounded" method="post" action="/articulos/<%=article.id%>">
             <h2>Add your comment</h2>
             <div>
               <label for="exampleInputEmail1" class="form-label"></label>
@@ -56,13 +56,12 @@
 
             <button type="submit" class="btn btn-primary mt-1 w-100">Guardar</button>
           </form>
-          <h3>Comments (nro)</h3>
+          <h3>Comments</h3>
           <% for (const comment of comments){%>
           <p><%= comment.comment %></p>
-          <small><%= comment.firstname + " " +comment.lastname %></small>
-          <hr/>
+          <small><%= comment.username %></small>
+          <hr />
           <%}%>
-          
         </div>
       </div>
     </div>

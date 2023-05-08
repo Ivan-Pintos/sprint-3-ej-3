@@ -12,8 +12,7 @@ module.exports = async () => {
 
     comments.push({
       comment: faker.lorem.paragraphs(2),
-      firstname: faker.name.firstName(),
-      lastname: faker.name.lastName(),
+      username: faker.name.firstName(),
       articleId: randomArticle.id,
     });
   }
