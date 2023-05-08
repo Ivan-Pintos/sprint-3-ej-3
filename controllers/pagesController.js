@@ -19,7 +19,7 @@
 const { Article } = require("../models");
 
 async function showHome(req, res) {
-  const articles = await Article.findAll({ include: "author" });
+  const articles = await Article.findAll({ include: {all: true}, order:[["updatedAt", "ASC"]] });
   res.render("home", { articles });
 }
 
