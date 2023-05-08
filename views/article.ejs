@@ -32,10 +32,10 @@
         <div class="col-8 col-mb-4 mx-auto">
           <p><%=article.content %>></p>
           <hr />
-          <form class="shadow p-2 rounded" method="post" action="/articulos/<%=article.id%>">
+          <form class="shadow p-2 rounded" method="POST" action="/comentarios/<%=article.id%>">
             <h2>Add your comment</h2>
             <div>
-              <label for="exampleInputEmail1" class="form-label"></label>
+              <label for="nombre" class="form-label"></label>
               <input
                 type="text"
                 class="form-control"
@@ -45,7 +45,7 @@
               />
             </div>
             <div>
-              <label for="exampleInputPassword1" class="form-label"></label>
+              <label for="comentarios" class="form-label"></label>
               <textarea
                 type="text"
                 class="form-control form-control-lg"

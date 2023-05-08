@@ -10,7 +10,7 @@ async function store(req, res) {
     username: author,
     articleId: idArticle,
   });
-  res.redirect("/article");
+  res.redirect(`/articulos/${idArticle}`);
 }
 
 module.exports = { store };

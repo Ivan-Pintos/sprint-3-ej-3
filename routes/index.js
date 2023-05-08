@@ -30,6 +30,7 @@ module.exports = (app) => {
 
   app.use("/usuarios", userRoutes);
   app.use("/articulos", articleRoutes);
+  //app.use("/comentarios", commentRoutes);
   app.use("/comentarios", commentRoutes);
 
   app.use("/", publicRoutes);
