@@ -27,8 +27,8 @@
 
     <div class="container">
       <div class="row mx-0 px-0">
-        <div class="col-4"></div>
-        <div class="col-4">
+        
+        <div class="col-8 col-mb-4 mx-auto">
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt recusandae, ducimus
             pariatur iure eum sint similique? Qui harum, aliquid ut neque ducimus cum veniam, minima
@@ -40,26 +40,30 @@
           <hr />
           <form class="shadow p-2" method="post" action="/comentarios">
             <h2>Add your comment</h2>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nombre</label>
+            <div>
+              <label for="exampleInputEmail1" class="form-label"></label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
                 aria-describedby="emailHelp"
-                placeholder="Ingresar nombre y apellido"
+                placeholder="Nombre"
               />
             </div>
-            <div class="mb-3">
+            <div>
               <label for="exampleInputPassword1" class="form-label"></label>
-              <input type="text" class="form-control" name="comentarios" placeholder="" />
-              <div class="form-text">Ejemplo: Perez</div>
+              <textarea type="text" class="form-control form-control-lg" name="comentarios" placeholder=""></textarea>
+              
             </div>
 
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-primary mt-1 w-100 ">Guardar</button>
           </form>
+          <h3>Comments (Nro)</h3>
+          <p>Comentario1</p>
+          <small>author1</small>
+          <hr>
         </div>
-        <div class="col-4"></div>
+       
       </div>
     </div>
     
