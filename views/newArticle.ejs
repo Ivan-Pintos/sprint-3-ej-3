@@ -22,7 +22,7 @@
           <h3 class="text-muted">New article</h3>
         </div>
         <hr />
-        <form method="POST" enctype="multipart/form-data" action="/articulos/crear">
+        <form method="POST" class="rounded" enctype="multipart/form-data" action="/articulos/crear">
           <label for="title" class="mb-2 text-muted fw-bold">Title</label>
           <input type="text" id="title" name="title" class="form-control mb-2" value="" />
           <label for="content" class="mb-2 text-muted fw-bold">Content</label>
@@ -36,23 +36,17 @@
           <label for="author" class="mb-2 text-muted fw-bold">Author (Id)</label>
           <input
             type="text"
-            id="authorFirstName"
-            name="authorFirstName"
+            id="author"
+            name="author"
             class="form-control mb-3"
-            value=""
+           
           />
-          <input
-            type="text"
-            id="authorLastName"
-            name="authorLastName"
-            class="form-control mb-3"
-            value=""
-          />
+
 
           <label for="image" class="mb-2 text-muted fw-bold">Image (URL)</label>
           <input type="file" id="newImageArticle" name="image" class="form-control-file mb-4" />
           <br />
-          <a class="btn btn-success mb-2" href="/views/admin.ejs">Create</a>
+          <button class="btn btn-success mb-2" type="submit">Create</button>
         </form>
       </div>
       <div class="ms-5">

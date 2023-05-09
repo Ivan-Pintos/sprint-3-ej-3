@@ -13,7 +13,7 @@ router.get("/:id", articleController.show);
 router.get("/editar/:id", articleController.edit);
 router.post("/editar/:id", articleController.update);
 //router.patch("/:id", articleController.update);
-router.delete("/:id", articleController.destroy);
+router.delete("/admin/:id", articleController.destroy);
 router.get("/articulos", articleController.show)
 
 module.exports = router;
