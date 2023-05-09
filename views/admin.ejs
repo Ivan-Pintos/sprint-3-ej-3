@@ -18,7 +18,7 @@
     <div class="container mt-5">
       <div class="d-flex justify-content-between">
         <h2>ARTICLES</h2>
-        <a class="btn btn-success" href="">NUEVO</a>
+        <a class="btn btn-success " href="/articulos/crear">Nuevo</a>
       </div>
       <table class="table table-striped">
         <thead>
@@ -38,14 +38,14 @@
           <tr>
             <td><%= article.id %></td>
             <td><%= article.title %></td>
-            <td><%= article.content %></td>
-            <td><%= article.image %></td>
+            <td><%= article.content.slice(0, 150)+ "..." %></td>
+            <td><img style="max-width: 100px;" src="/img/<%= article.image %>"></td>
             <td><%= article.createdAt %></td>
             <td><%= article.author.firstname %></td>
 
             <td>
               <div class="d-flex flex-column">
-                <a class="btn btn-primary mx-auto px-3 mb-1" href="">Editar</a>
+                <a class="btn btn-primary mx-auto px-3 mb-1" href="/articulos/editar/<%= article.id %>">Editar</a>
                 <a class="btn btn-danger mx-auto px-3" href="">Eliminar</a>
               </div>
             </td>
