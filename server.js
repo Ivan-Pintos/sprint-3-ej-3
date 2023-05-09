@@ -8,6 +8,7 @@ const routes = require("./routes");
 const methodOverride = require("method-override");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
+const bcrypt = require("bcryptjs");
 
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
@@ -26,18 +27,18 @@ app.set("view engine", "ejs");
 passport.use(
   new LocalStrategy(
     { usernameField: "email", passwordField: "password" },
-    async (username, password, cb) => {
+    async (email, password, done) => {
       try {
-        const user = await Author.findOne({ where: { email: username } });
+        const user = await Author.findOne({ where: { email: email } });
         if (user) {
-          const Userpassword = await Author.findOne({ where: { email: username } }).password;
-          if (Userpassword === password) {
+          const Userpassword = await Author.findOne({ where: { email: email } });
+          if (bcrypt.compare(password, Userpassword.dataValues.password)) {
             return done(null, user);
           } else {
-            done(null, false, { message: "Credenciales incorrectas" });
+            return done(null, false, { message: "Credenciales incorrectas" });
           }
         } else {
-          done(null, false, { message: "Credenciales incorrectas" });
+          return done(null, false, { message: "Credenciales incorrectas" });
         }
       } catch (error) {
         return done(error);
@@ -50,7 +51,7 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findbyPK(id);
+    const user = await Author.findByPk(id);
     done(null, user);
   } catch (error) {
     done(error);
