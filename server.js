@@ -56,6 +56,19 @@ passport.deserializeUser(async (id, done) => {
     done(error);
   }
 });
+
+app.get("/login", (req, res) => {
+  res.render("./login");
+});
+
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  }),
+);
+
 routes(app);
 
 app.listen(APP_PORT, () => {

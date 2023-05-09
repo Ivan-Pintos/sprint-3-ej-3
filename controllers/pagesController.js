@@ -19,8 +19,15 @@
 const { Article } = require("../models");
 
 async function showHome(req, res) {
-  const articles = await Article.findAll({ include: {all: true}, order:[["updatedAt", "ASC"]] });
-  res.render("home", { articles });
+  if (req.isAuthenticated()) {
+    const articles = await Article.findAll({
+      include: { all: true },
+      order: [["updatedAt", "ASC"]],
+    });
+    res.render("home", { articles });
+  } else {
+    res.redirect("/login");
+  }
 }
 
 async function showContact(req, res) {
