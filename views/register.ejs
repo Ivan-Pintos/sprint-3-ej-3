@@ -18,9 +18,9 @@
       class="container divLogin w-100 d-flex flex-column justify-content-center align-items-center"
     >
       <div
-        class="rounded w-50 shadow h-50 m-5 d-flex flex-column justify-content-center align-items-center"
+        class="rounded w-50 shadow h-75 m-5 d-flex flex-column justify-content-center align-items-center"
       >
-        <h3 class="text-muted">Login</h3>
+        <h3 class="text-muted">Registrarse</h3>
         <hr />
         <form
           method="POST"
@@ -28,6 +28,35 @@
           enctype="multipart/form-data"
           action="/articulos/crear"
         >
+          <div class="d-flex">
+            <div class="input-container">
+              <input
+                type="firstname"
+                id="firstname"
+                name="firstname"
+                class="input-field"
+                placeholder="Ingresar nombre..."
+                autocomplete="off"
+                required
+              />
+              <label for="input-field" class="input-label">Primer nombre.</label>
+              <span class="input-highlight"></span>
+            </div>
+            <div class="input-container">
+              <input
+                type="lastname"
+                id="lastname"
+                name="lastname"
+                class="input-field"
+                placeholder="Ingresar Apellido..."
+                autocomplete="off"
+                required
+              />
+              <label for="input-field" class="input-label">Apellido.</label>
+              <span class="input-highlight"></span>
+            </div>
+          </div>
+
           <div class="input-container">
             <input
               type="email"

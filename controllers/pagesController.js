@@ -42,6 +42,12 @@ async function showArticle(req, res) {
   const articles = await Article.findByPk();
   res.render("article", { articles });
 }
+async function showLogin(req, res) {
+  res.render("./login");
+}
+async function showRegister(req, res) {
+  res.render("./register");
+}
 
 // Otros handlers...
 // ...
@@ -51,4 +57,6 @@ module.exports = {
   showContact,
   showAboutUs,
   showArticle,
+  showLogin,
+  showRegister,
 };
