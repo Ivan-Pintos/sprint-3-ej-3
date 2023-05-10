@@ -13,4 +13,5 @@ router.get("/login", (req, res) => {
 });
 router.post("/login", pagesController.showLogin);
 router.get("/register", pagesController.showRegister);
+router.post("/register", pagesController.register);
 module.exports = router;

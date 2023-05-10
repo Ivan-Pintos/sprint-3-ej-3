@@ -10,17 +10,7 @@ async function show(req, res) {}
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {
-  const passwordUnHashed = req.body.password;
-  const passwordHashed = await bcrypt.hash(passwordUnHashed, 10);
-  await Author.create({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    password: passwordHashed,
-  });
-  return res.redirect("/admin");
-}
+async function store(req, res) {}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
