@@ -35,10 +35,10 @@ passport.use(
         if (await bcrypt.compare(password, BDUserpassword)) {
           return done(null, user);
         } else {
-          return done(null, false, { message: "Credenciales incorrectas" });
+          return done(null, false, { message: "Contraseña Incorrecta" });
         }
       } else {
-        return done(null, user);
+        return done(null, false, { message: "No hay un usuario registrado con ese email" });
       }
     } catch (error) {
       return done(error);
