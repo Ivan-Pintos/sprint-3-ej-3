@@ -22,6 +22,12 @@
       >
         <h1 class="text-muted mt-4">Login</h3>
         <form method="POST" class="w-75 gap-3 d-flex flex-column" action="/login">
+          <input
+              type="hidden"
+              id="url"
+              name="url"
+              value="<%= returnTo %>"
+            />
           <div class="input-container">
             <input
               type="email"

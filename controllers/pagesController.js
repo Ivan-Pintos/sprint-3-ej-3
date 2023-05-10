@@ -40,8 +40,11 @@ async function showArticle(req, res) {
 }
 async function showLogin(req, res) {
   const errorMessage = req.flash("error");
-  res.render("login", { message: errorMessage });
+  const returnTo = req.session.returnTo;
+  delete req.session.returnTo;
+  res.render("login", { message: errorMessage, returnTo: returnTo });
 }
+
 async function showRegister(req, res) {
   res.render("./register");
 }
