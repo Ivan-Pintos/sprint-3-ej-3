@@ -1,10 +1,9 @@
 const express = require("express");
-const { Article } = require("../models");
-const router = express.Router();
 const articleController = require("../controllers/articleController");
 const authController = require("../controllers/authControllers");
-const ensureAuthenticated = require("../middleware/ensureAuthenticated");
+const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
+const router = express.Router();
 
 router.get("/admin", articleController.showAdmin);
-
+router.post("/login", authController.login);
 module.exports = router;

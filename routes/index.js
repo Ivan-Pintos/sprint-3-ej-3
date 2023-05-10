@@ -32,7 +32,7 @@ module.exports = (app) => {
   app.use("/articulos", articleRoutes);
   //app.use("/comentarios", commentRoutes);
   app.use("/comentarios", commentRoutes);
-
+  app.use("/", privateRoutes);
   app.use("/", publicRoutes);
   app.use("/admin", publicRoutes);
 };

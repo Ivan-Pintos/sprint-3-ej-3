@@ -1,17 +1,12 @@
 require("dotenv").config();
 const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const { Author } = require("./models/");
 const express = require("express");
 const routes = require("./routes");
 const methodOverride = require("method-override");
-const APP_PORT = process.env.APP_PORT || 3000;
 const flash = require("express-flash");
 const app = express();
-const bcrypt = require("bcryptjs");
-const passportConfig = require("./config/passport");
-???? = require("/config/passport");
+
+const { passportConfig, passport } = require("./config/passport");
 
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
@@ -23,27 +18,17 @@ app.use(
     saveUninitialized: false,
   }),
 );
-app.use(flash());
+
 app.use(passport.session());
 passportConfig();
+app.use(flash());
+
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    failureFlash: true,
-  }),
-  (req, res) => {
-    res.redirect(req.body.url);
-  },
-);
-
 routes(app);
 
-app.listen(APP_PORT, () => {
-  console.log(`\n[Express] Servidor corriendo en el puerto ${APP_PORT}.`);
-  console.log(`[Express] Ingresar a http://localhost:${APP_PORT}.\n`);
+app.listen(process.env.APP_PORT, () => {
+  console.log(`\n[Express] Servidor corriendo en el puerto ${process.env.APP_PORT}.`);
+  console.log(`[Express] Ingresar a http://localhost:${process.env.APP_PORT}.`);
 });

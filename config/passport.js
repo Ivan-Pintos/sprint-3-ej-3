@@ -1,9 +1,6 @@
-const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-
-app.use(flash());
-
+const bcrypt = require("bcryptjs");
 function passportConfig() {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
@@ -38,4 +35,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-module.exports = passportConfig;
+module.exports = {
+  passportConfig,
+  passport,
+};
