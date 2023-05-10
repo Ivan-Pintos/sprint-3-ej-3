@@ -19,13 +19,11 @@
 const { Article } = require("../models");
 
 async function showHome(req, res) {
-  const isAdmin = req.user && req.user.isAdmin;
-
   const articles = await Article.findAll({
     include: { all: true },
     order: [["updatedAt", "ASC"]],
   });
-  res.render("home", { articles, isAdmin });
+  res.render("home", { articles, userData: false });
 }
 
 async function showContact(req, res) {

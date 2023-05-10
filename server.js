@@ -66,6 +66,12 @@ app.post(
   }),
 );
 
+app.get("/logout", function (req, res) {
+  req.session.destroy(function (err) {
+    res.redirect("/");
+  });
+});
+
 routes(app);
 
 app.listen(APP_PORT, () => {

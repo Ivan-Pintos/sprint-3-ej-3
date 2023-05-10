@@ -7,10 +7,7 @@ const { Article } = require("../models");
 // Rutas relacionadas a la parte pública del sitio web:
 // ...
 router.get("/", pagesController.showHome);
-router.get("/admin", (req, res) => {
-  const isAdmin = req.user && req.user.isAdmin;
-  articleController.showAdmin(req, res, isAdmin);
-});
+router.get("/admin", articleController.showAdmin);
 router.get("/login", (req, res) => {
   res.render("login", { message: req.flash("error") });
 });
