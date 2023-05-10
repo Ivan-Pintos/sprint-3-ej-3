@@ -38,10 +38,17 @@ async function store(req, res) {
 
 // Show the form for editing the specified resource. Pasarle el id para que cargue
 async function edit(req, res) {
-  const articleId = req.params.id;
-  const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
-
-  return res.render("editArticle", { article });
+  if (req.isAuthenticated()) {
+    const articleId = req.params.id;
+    const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
+    if (req.user.dataValues.id === article.dataValues.authorId) {
+      return res.render("editArticle", { article });
+    } else {
+      return res.redirect("/admin");
+    }
+  } else {
+    return res.redirect("/admin");
+  }
 }
 
 // Update the specified resource in storage.
@@ -76,9 +83,13 @@ async function destroy(req, res) {
 }
 
 async function showAdmin(req, res) {
-  const articles = await Article.findAll({ include: "author" });
-
-  res.render("admin", { articles });
+  if (req.isAuthenticated()) {
+    const articles = await Article.findAll({ include: "author" });
+    const userData = req.user.dataValues;
+    res.render("admin", { articles, userData });
+  } else {
+    res.redirect("/login");
+  }
 }
 module.exports = {
   index,
