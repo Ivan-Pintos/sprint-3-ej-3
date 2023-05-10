@@ -1,5 +1,6 @@
 const { Article, Comment } = require("../models");
 const formidable = require("formidable");
+
 // Display a listing of the resource.
 async function index(req, res) {
   res.render("home", (userData = false));
@@ -15,12 +16,7 @@ async function show(req, res) {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  if (req.isAuthenticated()) {
-    return res.render("newArticle");
-  } else {
-    req.session.returnTo = `/articulos/crear`;
-    return res.redirect("/login");
-  }
+  return res.render("newArticle");
 }
 
 // Store a newly created resource in storage.
@@ -45,17 +41,12 @@ async function store(req, res) {
 
 // Show the form for editing the specified resource. Pasarle el id para que cargue
 async function edit(req, res) {
-  if (req.isAuthenticated()) {
-    const articleId = req.params.id;
-    const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
-    if (req.user.dataValues.id === article.dataValues.authorId) {
-      return res.render("editArticle", { article });
-    } else {
-      return res.redirect("/admin");
-    }
+  const articleId = req.params.id;
+  const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
+  if (req.user.dataValues.id === article.dataValues.authorId) {
+    return res.render("editArticle", { article });
   } else {
-    req.session.returnTo = `/articulos/editar/${articleId}`;
-    return res.redirect("/login");
+    return res.redirect("/admin");
   }
 }
 
@@ -83,26 +74,20 @@ async function update(req, res) {
 }
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  if (req.isAuthenticated()) {
+  const article = await Article.findByPk(req.params.id);
+  if (req.user.dataValues.id === article.dataValues.authorId) {
     await Comment.destroy({ where: { articleId: req.params.id } });
     await Article.destroy({
       where: { id: req.params.id },
     });
-    return res.redirect("/admin");
-  } else {
-    return res.redirect("/login");
   }
+  return res.redirect("/admin");
 }
 
 async function showAdmin(req, res) {
-  if (req.isAuthenticated()) {
-    const articles = await Article.findAll({ include: "author" });
-    const userData = req.user.dataValues;
-    res.render("admin", { articles, userData });
-  } else {
-    req.session.returnTo = `/admin`;
-    res.redirect("/login");
-  }
+  const articles = await Article.findAll({ include: "author" });
+  const userData = req.user.dataValues;
+  res.render("admin", { articles, userData });
 }
 module.exports = {
   index,
