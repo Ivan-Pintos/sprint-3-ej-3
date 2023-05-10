@@ -7,6 +7,7 @@ const express = require("express");
 const routes = require("./routes");
 const methodOverride = require("method-override");
 const APP_PORT = process.env.APP_PORT || 3000;
+const flash = require("express-flash");
 const app = express();
 const bcrypt = require("bcryptjs");
 
@@ -20,6 +21,7 @@ app.use(
     saveUninitialized: false,
   }),
 );
+app.use(flash());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -36,7 +38,7 @@ passport.use(
           return done(null, false, { message: "Credenciales incorrectas" });
         }
       } else {
-        return done(null, false, { message: "Credenciales incorrectas" });
+        return done(null, user);
       }
     } catch (error) {
       return done(error);
@@ -60,6 +62,7 @@ app.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
+    failureFlash: true,
   }),
 );
 

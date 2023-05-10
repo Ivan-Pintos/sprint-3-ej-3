@@ -18,15 +18,10 @@
       class="container divLogin w-100 d-flex flex-column justify-content-center align-items-center"
     >
       <div
-        class="rounded w-50 shadow h-50 m-5 d-flex flex-column justify-content-center align-items-center"
+        class="rounded w-50 shadow h-75 m-5 d-flex flex-column justify-content-around align-items-center"
       >
-        <h3 class="textMain">Login</h3>
-        <hr />
-        <form
-          method="POST"
-          class="w-75 gap-3 d-flex flex-column"
-          action="/login"
-        >
+        <h3 class="textMain mt-5">Login</h3>
+        <form method="POST" class="w-75 gap-3 d-flex flex-column" action="/login">
           <div class="input-container">
             <input
               type="email"
@@ -53,14 +48,16 @@
             <label for="input-field" class="input-label">Password.</label>
             <span class="input-highlight"></span>
           </div>
-            <button
-              class="btn btn-success justify-content-center w-25 d-flex align-self-center text-center"
-              type="submit"
-            >
-              Ingresar
-            </button>
-            <a class="aLink justify-content-center text-center" href="/register"> Registrarse </a>
-          </div>
+          <% if (message && message.length > 0) { %>
+          <div class="alert alert-danger"><%= message %></div>
+          <% } %>
+          <button
+            class="btn btn-success justify-content-center w-25 d-flex align-self-center text-center"
+            type="submit"
+          >
+            Ingresar
+          </button>
+          <a class="aLink justify-content-center text-center" href="/register"> Registrarse </a>
         </form>
       </div>
     </div>

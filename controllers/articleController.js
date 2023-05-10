@@ -1,7 +1,10 @@
 const { Article, Comment } = require("../models");
 const formidable = require("formidable");
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  const isAdmin = req.user && req.user.isAdmin; // Verifica si el usuario es administrador
+  res.render("home", { isAdmin });
+}
 
 // Display the specified resource.
 async function show(req, res) {
@@ -75,10 +78,10 @@ async function destroy(req, res) {
   return res.redirect("/admin");
 }
 
-async function showAdmin(req, res) {
+async function showAdmin(req, res, isAdmin) {
   const articles = await Article.findAll({ include: "author" });
 
-  res.render("admin", { articles });
+  res.render("admin", { articles, isAdmin });
 }
 module.exports = {
   index,

@@ -19,12 +19,14 @@
 const { Article } = require("../models");
 
 async function showHome(req, res) {
+  const isAdmin = req.user && req.user.isAdmin;
+
   if (req.isAuthenticated()) {
     const articles = await Article.findAll({
       include: { all: true },
       order: [["updatedAt", "ASC"]],
     });
-    res.render("home", { articles });
+    res.render("home", { articles, isAdmin });
   } else {
     res.redirect("/login");
   }
@@ -43,7 +45,8 @@ async function showArticle(req, res) {
   res.render("article", { articles });
 }
 async function showLogin(req, res) {
-  res.render("./login");
+  const errorMessage = req.flash("error");
+  res.render("login", { message: errorMessage });
 }
 async function showRegister(req, res) {
   res.render("./register");
