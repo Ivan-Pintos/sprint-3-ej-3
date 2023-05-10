@@ -16,7 +16,11 @@ async function show(req, res) {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  return res.render("newArticle");
+  if (req.isAuthenticated()) {
+    return res.render("newArticle");
+  } else {
+    return res.redirect("/login");
+  }
 }
 
 // Store a newly created resource in storage.
@@ -41,10 +45,18 @@ async function store(req, res) {
 
 // Show the form for editing the specified resource. Pasarle el id para que cargue
 async function edit(req, res) {
-  const articleId = req.params.id;
-  const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
-
-  return res.render("editArticle", { article });
+  if (req.isAuthenticated()) {
+    const articleId = req.params.id;
+    const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
+    if (req.user.dataValues.id === article.dataValues.authorId) {
+      return res.render("editArticle", { article });
+    } else {
+      return res.redirect("/admin");
+    }
+  } else {
+    console.log(req);
+    return res.redirect("/login");
+  }
 }
 
 // Update the specified resource in storage.
@@ -71,17 +83,25 @@ async function update(req, res) {
 }
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  await Comment.destroy({ where: { articleId: req.params.id } });
-  await Article.destroy({
-    where: { id: req.params.id },
-  });
-  return res.redirect("/admin");
+  if (req.isAuthenticated()) {
+    await Comment.destroy({ where: { articleId: req.params.id } });
+    await Article.destroy({
+      where: { id: req.params.id },
+    });
+    return res.redirect("/admin");
+  } else {
+    return res.redirect("/login");
+  }
 }
 
 async function showAdmin(req, res, isAdmin) {
-  const articles = await Article.findAll({ include: "author" });
-
-  res.render("admin", { articles, isAdmin });
+  if (req.isAuthenticated()) {
+    const articles = await Article.findAll({ include: "author" });
+    const userData = req.user.dataValues;
+    res.render("admin", { articles, isAdmin, userData });
+  } else {
+    res.redirect("/login");
+  }
 }
 module.exports = {
   index,
