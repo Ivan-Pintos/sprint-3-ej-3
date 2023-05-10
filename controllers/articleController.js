@@ -13,7 +13,11 @@ async function show(req, res) {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  return res.render("newArticle");
+  if (req.isAuthenticated()) {
+    return res.render("newArticle");
+  } else {
+    return res.redirect("/login");
+  }
 }
 
 // Store a newly created resource in storage.
@@ -47,7 +51,8 @@ async function edit(req, res) {
       return res.redirect("/admin");
     }
   } else {
-    return res.redirect("/admin");
+    console.log(req);
+    return res.redirect("/login");
   }
 }
 
@@ -75,11 +80,15 @@ async function update(req, res) {
 }
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  await Comment.destroy({ where: { articleId: req.params.id } });
-  await Article.destroy({
-    where: { id: req.params.id },
-  });
-  return res.redirect("/admin");
+  if (req.isAuthenticated()) {
+    await Comment.destroy({ where: { articleId: req.params.id } });
+    await Article.destroy({
+      where: { id: req.params.id },
+    });
+    return res.redirect("/admin");
+  } else {
+    return res.redirect("/login");
+  }
 }
 
 async function showAdmin(req, res) {
