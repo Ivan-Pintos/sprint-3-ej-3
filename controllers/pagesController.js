@@ -38,7 +38,10 @@ async function showArticle(req, res) {
   const articles = await Article.findByPk();
   res.render("article", { articles });
 }
-async function showLogin(req, res) {}
+async function showLogin(req, res) {
+  const errorMessage = req.flash("error");
+  res.render("login", { message: errorMessage });
+}
 async function showRegister(req, res) {
   res.render("./register");
 }
@@ -53,6 +56,9 @@ async function register(req, res) {
   });
   return res.redirect("/admin");
 }
+function logout(req, res) {
+  req.session.destroy((err) => res.redirect("/"));
+}
 
 module.exports = {
   showHome,
@@ -62,4 +68,5 @@ module.exports = {
   showLogin,
   showRegister,
   register,
+  logout,
 };

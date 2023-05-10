@@ -8,4 +8,5 @@ router.get("/admin", articleController.showAdmin);
 router.get("/login", pagesController.showLogin);
 router.get("/register", pagesController.showRegister);
 router.post("/register", pagesController.register);
+router.get("/logout", pagesController.logout);
 module.exports = router;
