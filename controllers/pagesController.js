@@ -23,7 +23,7 @@ async function showHome(req, res) {
     include: { all: true },
     order: [["updatedAt", "ASC"]],
   });
-  res.render("home", { articles });
+  res.render("home", { articles, userData: false });
 }
 
 async function showContact(req, res) {
@@ -39,7 +39,8 @@ async function showArticle(req, res) {
   res.render("article", { articles });
 }
 async function showLogin(req, res) {
-  res.render("./login");
+  const errorMessage = req.flash("error");
+  res.render("login", { message: errorMessage });
 }
 async function showRegister(req, res) {
   res.render("./register");

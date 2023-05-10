@@ -8,7 +8,10 @@ const { Article } = require("../models");
 // ...
 router.get("/", pagesController.showHome);
 router.get("/admin", articleController.showAdmin);
-router.get("/login", pagesController.showLogin);
+router.get("/login", (req, res) => {
+  res.render("login", { message: req.flash("error") });
+});
+router.post("/login", pagesController.showLogin);
 router.get("/register", pagesController.showRegister);
 router.post("/register", pagesController.register);
 module.exports = router;
