@@ -10,6 +10,8 @@ const APP_PORT = process.env.APP_PORT || 3000;
 const flash = require("express-flash");
 const app = express();
 const bcrypt = require("bcryptjs");
+const passportConfig = require("./config/passport");
+???? = require("/config/passport");
 
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
@@ -23,39 +25,10 @@ app.use(
 );
 app.use(flash());
 app.use(passport.session());
+passportConfig();
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-passport.use(
-  new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
-    try {
-      const user = await Author.findOne({ where: { email: email } });
-      if (user) {
-        const BDUserpassword = user.dataValues.password;
-        if (await bcrypt.compare(password, BDUserpassword)) {
-          return done(null, user);
-        } else {
-          return done(null, false, { message: "Contraseña Incorrecta" });
-        }
-      } else {
-        return done(null, false, { message: "No hay un usuario registrado con ese email" });
-      }
-    } catch (error) {
-      return done(error);
-    }
-  }),
-);
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await Author.findByPk(id);
-    done(null, user);
-  } catch (error) {
-    done(error);
-  }
-});
 
 app.post(
   "/login",
