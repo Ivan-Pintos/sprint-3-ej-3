@@ -38,10 +38,7 @@ async function showArticle(req, res) {
   const articles = await Article.findByPk();
   res.render("article", { articles });
 }
-async function showLogin(req, res) {
-  const errorMessage = req.flash("error");
-  res.render("login", { message: errorMessage });
-}
+async function showLogin(req, res) {}
 async function showRegister(req, res) {
   res.render("./register");
 }

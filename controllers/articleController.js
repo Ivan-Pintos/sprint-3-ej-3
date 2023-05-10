@@ -2,8 +2,7 @@ const { Article, Comment } = require("../models");
 const formidable = require("formidable");
 // Display a listing of the resource.
 async function index(req, res) {
-  const isAdmin = req.user && req.user.isAdmin; // Verifica si el usuario es administrador
-  res.render("home", { isAdmin });
+  res.render("home", (userData = false));
 }
 
 // Display the specified resource.
@@ -11,7 +10,7 @@ async function show(req, res) {
   const articleId = req.params.id;
   const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
   const comments = await Comment.findAll({ where: { articleId: articleId } });
-  return res.render("article", { article, comments });
+  return res.render("article", { article, comments, userData: false });
 }
 
 // Show the form for creating a new resource
