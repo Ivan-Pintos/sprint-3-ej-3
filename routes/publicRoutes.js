@@ -10,4 +10,5 @@ router.get("/", pagesController.showHome);
 router.get("/admin", articleController.showAdmin);
 router.get("/login", pagesController.showLogin);
 router.get("/register", pagesController.showRegister);
+router.post("/register", pagesController.register);
 module.exports = router;

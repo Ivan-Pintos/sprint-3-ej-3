@@ -44,9 +44,17 @@ async function showLogin(req, res) {
 async function showRegister(req, res) {
   res.render("./register");
 }
-
-// Otros handlers...
-// ...
+async function register(req, res) {
+  const passwordUnHashed = req.body.password;
+  const passwordHashed = await bcrypt.hash(passwordUnHashed, 10);
+  await Author.create({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: passwordHashed,
+  });
+  return res.redirect("/admin");
+}
 
 module.exports = {
   showHome,
@@ -55,4 +63,5 @@ module.exports = {
   showArticle,
   showLogin,
   showRegister,
+  register,
 };
