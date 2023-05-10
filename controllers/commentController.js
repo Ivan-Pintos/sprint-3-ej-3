@@ -1,11 +1,10 @@
 const { Comment } = require("../models");
-
 async function store(req, res) {
   const content = req.body.comentarios;
   const idArticle = req.params.id;
 
   if (req.isAuthenticated()) {
-    const author = req.user.firstname;
+    const author = req.user.username;
     await Comment.create({
       comment: content,
       username: author,
