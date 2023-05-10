@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 app.use(
   session({
-    secret: "SecretText",
+    secret: process.env.SECRET_WORD,
     resave: false,
     saveUninitialized: false,
   }),
@@ -25,26 +25,23 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 passport.use(
-  new LocalStrategy(
-    { usernameField: "email", passwordField: "password" },
-    async (email, password, done) => {
-      try {
-        const user = await Author.findOne({ where: { email: email } });
-        if (user) {
-          const Userpassword = await Author.findOne({ where: { email: email } });
-          if (bcrypt.compare(password, Userpassword.dataValues.password)) {
-            return done(null, user);
-          } else {
-            return done(null, false, { message: "Credenciales incorrectas" });
-          }
+  new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
+    try {
+      const user = await Author.findOne({ where: { email: email } });
+      if (user) {
+        const BDUserpassword = user.dataValues.password;
+        if (await bcrypt.compare(password, BDUserpassword)) {
+          return done(null, user);
         } else {
           return done(null, false, { message: "Credenciales incorrectas" });
         }
-      } catch (error) {
-        return done(error);
+      } else {
+        return done(null, false, { message: "Credenciales incorrectas" });
       }
-    },
-  ),
+    } catch (error) {
+      return done(error);
+    }
+  }),
 );
 passport.serializeUser((user, done) => {
   done(null, user.id);
