@@ -33,10 +33,12 @@ app.set("view engine", "ejs");
 app.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/admin",
     failureRedirect: "/login",
     failureFlash: true,
   }),
+  (req, res) => {
+    res.redirect(req.body.url);
+  },
 );
 
 routes(app);

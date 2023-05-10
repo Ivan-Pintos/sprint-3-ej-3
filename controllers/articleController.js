@@ -18,6 +18,7 @@ async function create(req, res) {
   if (req.isAuthenticated()) {
     return res.render("newArticle");
   } else {
+    req.session.returnTo = `/articulos/crear`;
     return res.redirect("/login");
   }
 }
@@ -53,7 +54,7 @@ async function edit(req, res) {
       return res.redirect("/admin");
     }
   } else {
-    console.log(req);
+    req.session.returnTo = `/articulos/editar/${articleId}`;
     return res.redirect("/login");
   }
 }
@@ -99,6 +100,7 @@ async function showAdmin(req, res) {
     const userData = req.user.dataValues;
     res.render("admin", { articles, userData });
   } else {
+    req.session.returnTo = `/admin`;
     res.redirect("/login");
   }
 }

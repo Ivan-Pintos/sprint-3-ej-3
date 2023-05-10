@@ -12,7 +12,7 @@ async function store(req, res) {
     });
     res.redirect(`/articulos/${idArticle}`);
   } else {
-    req.session.returnTo = `/articulos/${idArticle}`;
+    req.session.returnTo = `/articulos/${req.params.id}`;
     res.redirect("/login");
   }
 }
