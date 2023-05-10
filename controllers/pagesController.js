@@ -15,8 +15,8 @@
  * En caso de estar creando una API, este controlador carece de sentido y
  * no debería existir.
  */
-
-const { Article } = require("../models");
+const bcrypt = require("bcryptjs");
+const { Article, Author } = require("../models");
 
 async function showHome(req, res) {
   const articles = await Article.findAll({

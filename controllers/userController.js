@@ -1,5 +1,4 @@
 const { Author } = require("../models");
-const bcrypt = require("bcryptjs");
 // Display a listing of the resource.
 async function index(req, res) {}
 
