@@ -1,3 +1,9 @@
+body {
+  background-color: #F4D03F;
+background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
+
+}
+
 .divLogin {
     height: 100vh;
 }
@@ -26,9 +32,9 @@
     padding: 10px;
     font-size: 16px;
     border: none;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #8cda05;
     outline: none;
-    background-color: transparent;
+    background-color: rgb(255, 255, 255) !important;
   }
   
   /* Input label */
@@ -37,7 +43,7 @@
     top: 0;
     left: 0;
     font-size: 16px;
-    color: rgba(204, 204, 204, 0);
+    color: rgba(0, 0, 0, 0);
     pointer-events: none;
     transition: all 0.3s ease;
   }
@@ -102,10 +108,6 @@
     100% {
       transform: rotate(360deg);
     }
-  }
-
-  .input-class {
-    margin: 0px 0px 20px 0px;
   }
 
   .error-text {

@@ -28,11 +28,14 @@
     </div>
     <div class="container">
       <div class="row mx-0 px-0">
-        <div class="col-8 col-mb-4 mx-auto">
-          <p><%=article.content %>></p>
+        <div class="col-8 col-mb-4 m-4 mx-auto">
+          <p><%=article.content %></p>
           <hr />
-          <% if (user) { %>
-          <form class="shadow p-2 rounded" method="POST" action="/comentarios/<%=article.id%>">
+          <form
+            class="p-2"
+            method="<% if (user) {%>POST<% } else { %> <% } %>"
+            action="<% if (user) {%> /comentarios/<%=article.id%> <% } else { %> /login <% } %>"
+          >
             <h2>Add your comment</h2>
             <div>
               <label for="comentarios" class="form-label"></label>
@@ -43,23 +46,12 @@
                 placeholder=""
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary mt-1 w-100">Guardar</button>
+            <button type="submit" class="btn btn-primary my-3 w-100">Guardar</button>
           </form>
-          <% }else{ %>
-          <form class="shadow p-2 rounded" action="/login">
-            <h2>Add your comment</h2>
-            <div>
-              <label for="comentarios" class="form-label"></label>
-              <textarea type="text" class="form-control form-control-lg" placeholder=""></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-1 w-100">Guardar</button>
-          </form>
-          <hr />
-          <%}%>
           <h3>Comments (<%= comments.length%>)</h3>
           <% for (const comment of comments){%>
-          <p><%= comment.comment %></p>
-          <small><%= comment.username %></small>
+          <p class="text-black">"<%= comment.comment %>"</p>
+          <small class="text-muted"><%= comment.username %></small>
           <hr />
           <%}%>
         </div>
