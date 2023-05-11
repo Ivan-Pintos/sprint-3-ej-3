@@ -26,12 +26,12 @@
         'numeric',})}` %></small
       >
     </div>
-
     <div class="container">
       <div class="row mx-0 px-0">
         <div class="col-8 col-mb-4 mx-auto">
           <p><%=article.content %>></p>
           <hr />
+          <% if (user) { %>
           <form class="shadow p-2 rounded" method="POST" action="/comentarios/<%=article.id%>">
             <h2>Add your comment</h2>
             <div>
@@ -43,9 +43,19 @@
                 placeholder=""
               ></textarea>
             </div>
-
             <button type="submit" class="btn btn-primary mt-1 w-100">Guardar</button>
           </form>
+          <% }else{ %>
+          <form class="shadow p-2 rounded" action="/login">
+            <h2>Add your comment</h2>
+            <div>
+              <label for="comentarios" class="form-label"></label>
+              <textarea type="text" class="form-control form-control-lg" placeholder=""></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-1 w-100">Guardar</button>
+          </form>
+          <hr />
+          <%}%>
           <h3>Comments (<%= comments.length%>)</h3>
           <% for (const comment of comments){%>
           <p><%= comment.comment %></p>
