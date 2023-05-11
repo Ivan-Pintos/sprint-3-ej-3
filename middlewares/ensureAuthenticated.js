@@ -2,7 +2,7 @@ function ensureAutentication(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    req.session.redirectTo = req.query.redirectTo;
+    req.session.redirectTo = req.url;
     res.redirect("/login");
   }
 }
