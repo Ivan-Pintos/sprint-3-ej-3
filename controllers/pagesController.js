@@ -17,6 +17,7 @@
  */
 const bcrypt = require("bcryptjs");
 const { Article, Author } = require("../models");
+const flash = require("express-flash");
 
 async function showHome(req, res) {
   const articles = await Article.findAll({
@@ -44,18 +45,34 @@ async function showLogin(req, res) {
 }
 
 async function showRegister(req, res) {
-  res.render("./register");
+  res.render("./register", { flash: req.flash() });
 }
 async function register(req, res) {
-  const passwordUnHashed = req.body.password;
-  const passwordHashed = await bcrypt.hash(passwordUnHashed, 10);
-  await Author.create({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    password: passwordHashed,
-  });
-  return res.redirect("/admin");
+  const { firstname, lastname, email, password } = req.body;
+  try {
+    const existingUser = await Author.findOne({ where: { email: email } });
+    if (existingUser) {
+      req.flash(
+        "error",
+        "El correo electrónico ya está registrado. Por favor, utiliza otro correo.",
+      );
+      return res.redirect("/register");
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await Author.create({
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      password: hashedPassword,
+    });
+
+    req.flash("success", "Registro exitoso. Inicia sesión para continuar.");
+    res.redirect("/login");
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Ha ocurrido un error en el registro.");
+    res.redirect("/register");
+  }
 }
 function logout(req, res) {
   req.session.destroy((err) => res.redirect("/"));
