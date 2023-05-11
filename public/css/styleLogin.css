@@ -93,8 +93,8 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    }
    
    button:hover {
-    box-shadow: 0 0 10px #198754, 0 0 25px #198754, 0 0 50px #198754;
-    transition-delay: 0.6s;
+    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
+    transition-delay: 0.1s;
    }
    
    button span {
@@ -111,7 +111,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    
    button:hover span:nth-child(1) {
     left: 100%;
-    transition: 0.7s;
+    transition: 0.2s;
    }
    
    button span:nth-child(3) {
@@ -125,7 +125,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(3) {
     right: 100%;
     transition: 0.7s;
-    transition-delay: 0.35s;
+    transition-delay: 0.3s;
    }
    
    button span:nth-child(2) {
@@ -139,7 +139,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(2) {
     top: 100%;
     transition: 0.7s;
-    transition-delay: 0.17s;
+    transition-delay: 0.1s;
    }
    
    button span:nth-child(4) {
@@ -152,15 +152,15 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    
    button:hover span:nth-child(4) {
     bottom: 100%;
-    transition: 0.7s;
-    transition-delay: 0.52s;
+    transition: 0.2s;
+    transition-delay: 0.2s;
    }
    
    button:active {
     background: #8cda05;
     background: linear-gradient(to top right, #8cda05, #8cda05);
     color: #bfbfbf;
-    box-shadow: 0 0 8px #8cda05, 0 0 8px #8cda05, 0 0 8px #8cda05;
+    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
     transition: 0.1s;
    }
    
@@ -189,8 +189,8 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    }
    
    button:hover {
-    box-shadow: 0 0 10px #198754, 0 0 25px #198754, 0 0 50px #198754;
-    transition-delay: 0.6s;
+    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
+    transition-delay: 0.1s;
    }
    
    button span {
@@ -207,7 +207,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    
    button:hover span:nth-child(1) {
     left: 100%;
-    transition: 0.7s;
+    transition: 0.2s;
    }
    
    button span:nth-child(3) {
@@ -221,7 +221,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(3) {
     right: 100%;
     transition: 0.7s;
-    transition-delay: 0.35s;
+    transition-delay: 0.2s;
    }
    
    button span:nth-child(2) {
@@ -235,7 +235,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(2) {
     top: 100%;
     transition: 0.7s;
-    transition-delay: 0.17s;
+    transition-delay: 0.1s;
    }
    
    button span:nth-child(4) {
@@ -249,14 +249,14 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(4) {
     bottom: 100%;
     transition: 0.7s;
-    transition-delay: 0.52s;
+    transition-delay: 0.1s;
    }
    
    button:active {
     background: #8cda05;
     background: linear-gradient(to top right, #8cda05, #8cda05);
     color: #bfbfbf;
-    box-shadow: 0 0 8px #8cda05, 0 0 8px #8cda05, 0 0 8px #8cda05;
+    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
     transition: 0.1s;
    }
    
