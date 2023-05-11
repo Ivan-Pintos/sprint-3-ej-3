@@ -15,9 +15,8 @@
  * En caso de estar creando una API, este controlador carece de sentido y
  * no debería existir.
  */
-const bcrypt = require("bcryptjs");
+
 const { Article, Author } = require("../models");
-const flash = require("express-flash");
 
 async function showHome(req, res) {
   const articles = await Article.findAll({
@@ -58,14 +57,12 @@ async function register(req, res) {
       );
       return res.redirect("/register");
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
     await Author.create({
       firstname: firstname,
       lastname: lastname,
       email: email,
-      password: hashedPassword,
+      password: password,
     });
-
     req.flash("success", "Registro exitoso. Inicia sesión para continuar.");
     res.redirect("/login");
   } catch (error) {

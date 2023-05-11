@@ -1,28 +1,27 @@
 body {
-  background-color: #F4D03F;
-background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
-
+  background-color: #f4d03f;
+  background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
 }
 
 .divLogin {
-    height: 100vh;
+  height: 100vh;
 }
 
 .textMain {
-    color: rgb(72, 72, 72) !important;
-    font-size: 50px !important;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  color: rgb(72, 72, 72) !important;
+  font-size: 50px !important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
 }
 
 .textSecond {
   color: rgb(72, 72, 72) !important;
   font-size: 40px !important;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
 }
 
 .aLink {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 /* Input container */
@@ -93,8 +92,8 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    }
    
    button:hover {
-    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
-    transition-delay: 0.1s;
+    box-shadow: 0 0 10px #198754, 0 0 25px #198754, 0 0 50px #198754;
+    transition-delay: 0.6s;
    }
    
    button span {
@@ -111,7 +110,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    
    button:hover span:nth-child(1) {
     left: 100%;
-    transition: 0.2s;
+    transition: 0.7s;
    }
    
    button span:nth-child(3) {
@@ -125,7 +124,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(3) {
     right: 100%;
     transition: 0.7s;
-    transition-delay: 0.3s;
+    transition-delay: 0.35s;
    }
    
    button span:nth-child(2) {
@@ -139,7 +138,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(2) {
     top: 100%;
     transition: 0.7s;
-    transition-delay: 0.1s;
+    transition-delay: 0.17s;
    }
    
    button span:nth-child(4) {
@@ -152,15 +151,15 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    
    button:hover span:nth-child(4) {
     bottom: 100%;
-    transition: 0.2s;
-    transition-delay: 0.2s;
+    transition: 0.7s;
+    transition-delay: 0.52s;
    }
    
    button:active {
     background: #8cda05;
     background: linear-gradient(to top right, #8cda05, #8cda05);
     color: #bfbfbf;
-    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
+    box-shadow: 0 0 8px #8cda05, 0 0 8px #8cda05, 0 0 8px #8cda05;
     transition: 0.1s;
    }
    
@@ -189,8 +188,8 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    }
    
    button:hover {
-    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
-    transition-delay: 0.1s;
+    box-shadow: 0 0 10px #198754, 0 0 25px #198754, 0 0 50px #198754;
+    transition-delay: 0.6s;
    }
    
    button span {
@@ -207,7 +206,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    
    button:hover span:nth-child(1) {
     left: 100%;
-    transition: 0.2s;
+    transition: 0.7s;
    }
    
    button span:nth-child(3) {
@@ -221,7 +220,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(3) {
     right: 100%;
     transition: 0.7s;
-    transition-delay: 0.2s;
+    transition-delay: 0.35s;
    }
    
    button span:nth-child(2) {
@@ -235,7 +234,7 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(2) {
     top: 100%;
     transition: 0.7s;
-    transition-delay: 0.1s;
+    transition-delay: 0.17s;
    }
    
    button span:nth-child(4) {
@@ -249,14 +248,14 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    button:hover span:nth-child(4) {
     bottom: 100%;
     transition: 0.7s;
-    transition-delay: 0.1s;
+    transition-delay: 0.52s;
    }
    
    button:active {
     background: #8cda05;
     background: linear-gradient(to top right, #8cda05, #8cda05);
     color: #bfbfbf;
-    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
+    box-shadow: 0 0 8px #8cda05, 0 0 8px #8cda05, 0 0 8px #8cda05;
     transition: 0.1s;
    }
    
@@ -272,16 +271,16 @@ background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
    margin: 0px !important;
   } 
 
-  .alert {
-    padding: 10px;
-  }
+.alert {
+  padding: 10px;
+}
 
-  .tracking-in-expand {
-    -webkit-animation: tracking-in-expand 5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-            animation: tracking-in-expand 5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-  }
+.tracking-in-expand {
+  -webkit-animation: tracking-in-expand 5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand 5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
 
-  /* ----------------------------------------------
+/* ----------------------------------------------
  * Generated by Animista on 2023-5-11 15:31:16
  * Licensed under FreeBSD License.
  * See http://animista.net/license for more info. 
