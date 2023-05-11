@@ -18,7 +18,7 @@
       class="container divLogin w-100 d-flex flex-column justify-content-center align-items-center"
     >
       <div
-        class="rounded w-50 shadow h-75 m-5 d-flex flex-column justify-content-center align-items-center"
+        class="rounded w-50 shadow h-100 m-5 d-flex flex-column justify-content-center align-items-center"
       >
         <h3 class="text-muted">Registrarse</h3>
         <hr />
@@ -70,11 +70,18 @@
               type="password"
               id="password"
               name="password"
-              class="input-field"
+              class="input-field input-class"
               placeholder="Ingresar Contraseña..."
               autocomplete="off"
               required
             />
+            <% if (flash.error && flash.error.length > 0) { %>
+            <div class="alert alert-danger">
+              <% flash.error.forEach(message => { %>
+              <p class="error-text"><%= message %></p>
+              <% }); %>
+            </div>
+            <% } %>
             <label for="input-field" class="input-label">Password.</label>
             <span class="input-highlight"></span>
           </div>

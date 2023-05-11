@@ -103,3 +103,15 @@
       transform: rotate(360deg);
     }
   }
+
+  .input-class {
+    margin: 0px 0px 20px 0px;
+  }
+
+  .error-text {
+   margin: 0px !important;
+  } 
+
+  .alert {
+    padding: 10px;
+  }

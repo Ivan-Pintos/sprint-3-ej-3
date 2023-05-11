@@ -12,10 +12,10 @@ function passportConfig() {
           if (await bcrypt.compare(password, BDUserpassword)) {
             return done(null, user);
           } else {
-            return done(null, false, { message: "Contraseña Incorrecta" });
+            return done(null, false, { message: "Contraseña Incorrecta :(" });
           }
         } else {
-          return done(null, false, { message: "No hay un usuario registrado con ese email" });
+          return done(null, false, { message: "Correo Electronico Incorrecto :(" });
         }
       } catch (error) {
         return done(error);
