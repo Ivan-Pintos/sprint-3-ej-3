@@ -19,7 +19,7 @@
     >
       <div class="rounded bg-white w-50 shadow-lg h-75 d-flex flex-column align-items-center">
         <div class="w-100 justify-content-center p-5 d-flex">
-          <h2 class="text-muted mt-5"><b>Login</b></h2>
+          <h1 class="text-muted mt-5 tracking-in-expand textMain">Login</h1>
         </div>
         <form method="POST" class="w-75 h-100 gap-2 d-flex flex-column" action="/login">
           <div class="input-container">
@@ -52,8 +52,15 @@
           <div class="alert alert-danger"><%= message %></div>
           <% } %>
           <div class="d-flex flex-row justify-content-center gap-3 align-items-center">
-            <button class="btn btn-success text-center w-25" type="submit">Sign In</button>
-            <a class="btn btn-outline-success text-center w-25" href="/register">Sign Up</a>
+            <button class="effectButton btn btn-success text-center w-25" type="submit">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span> Sign In
+            </button>
+            <a class="effectButton2 btn btn-outline-success text-center w-25" href="/register"
+              >Sign Up</a
+            >
           </div>
         </form>
       </div>
