@@ -46,7 +46,7 @@
             <td>
               <div class="d-flex flex-column">
                 <!--Los botones solo aparecen si el authorID del articulo coincide con el id del usuario creado-->
-                <% if (userData.id === article.authorId) { %>
+                <% if (user.id === article.authorId) { %>
                 <a
                   class="btn btn-primary mx-auto px-3 mb-1"
                   href="/articulos/editar/<%= article.id %>"

@@ -9,11 +9,11 @@ const {
 // ...
 
 router.get("/", articleController.index);
-router.get("/crear", ensureAutentication, articleController.create);
+router.get("/crear", makeUserAvailableInViews, ensureAutentication, articleController.create);
 router.post("/crear", articleController.store);
 router.post("/", articleController.store);
 router.get("/:id", makeUserAvailableInViews, articleController.show);
-router.get("/editar/:id", ensureAutentication, articleController.edit);
+router.get("/editar/:id", makeUserAvailableInViews, ensureAutentication, articleController.edit);
 router.post("/editar/:id", articleController.update);
 //router.patch("/:id", articleController.update);
 router.delete("/admin/:id", ensureAutentication, articleController.destroy);

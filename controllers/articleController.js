@@ -84,8 +84,7 @@ async function destroy(req, res) {
 
 async function showAdmin(req, res) {
   const articles = await Article.findAll({ include: "author" });
-  const userData = req.user.dataValues;
-  res.render("admin", { articles, userData });
+  res.render("admin", { articles });
 }
 module.exports = {
   index,
