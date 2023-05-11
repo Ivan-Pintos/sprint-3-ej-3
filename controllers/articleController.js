@@ -9,18 +9,10 @@ async function index(req, res) {
 // Display the specified resource.
 async function show(req, res) {
   const articleId = req.params.id;
-  try {
-    const article = await Article.findOne({ where: { id: articleId } });
-    const comments = await Comment.findAll({ where: { articleId: articleId } });
-    const userData = req.isAuthenticated() ? req.user : null;
-    return res.render("article", { article, comments, userData });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Error al obtener el artículo y los comentarios.");
-  }
+  const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
+  const comments = await Comment.findAll({ where: { articleId: articleId } });
+  return res.render("article", { article, comments, userData: false });
 }
-
-// Show the form for creating a new resource
 async function create(req, res) {
   return res.render("newArticle");
 }
