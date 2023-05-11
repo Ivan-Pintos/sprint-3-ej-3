@@ -92,8 +92,8 @@ body {
    }
    
    button:hover {
-    box-shadow: 0 0 10px #198754, 0 0 25px #198754, 0 0 50px #198754;
-    transition-delay: 0.6s;
+    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
+    transition-delay: 0.3s;
    }
    
    button span {
@@ -105,12 +105,12 @@ body {
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #198754);
+    background: linear-gradient(90deg, transparent, #03ff75);
    }
    
    button:hover span:nth-child(1) {
     left: 100%;
-    transition: 0.7s;
+    transition: 0.3s;
    }
    
    button span:nth-child(3) {
@@ -118,13 +118,13 @@ body {
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #8cda05);
+    background: linear-gradient(90deg, transparent, #4dd404d7);
    }
    
    button:hover span:nth-child(3) {
     right: 100%;
-    transition: 0.7s;
-    transition-delay: 0.35s;
+    transition: 0.3s;
+    transition-delay: 0.3s;
    }
    
    button span:nth-child(2) {
@@ -132,13 +132,13 @@ body {
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #8cda05);
+    background: linear-gradient(180deg, transparent, #7dc204);
    }
    
    button:hover span:nth-child(2) {
     top: 100%;
-    transition: 0.7s;
-    transition-delay: 0.17s;
+    transition: 0.3s;
+    transition-delay: 0.3s;
    }
    
    button span:nth-child(4) {
@@ -146,21 +146,21 @@ body {
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #8cda05);
+    background: linear-gradient(360deg, transparent, #629903);
    }
    
    button:hover span:nth-child(4) {
     bottom: 100%;
-    transition: 0.7s;
-    transition-delay: 0.52s;
+    transition: 0.2s;
+    transition-delay: 0.2s;
    }
    
    button:active {
     background: #8cda05;
     background: linear-gradient(to top right, #8cda05, #8cda05);
     color: #bfbfbf;
-    box-shadow: 0 0 8px #8cda05, 0 0 8px #8cda05, 0 0 8px #8cda05;
-    transition: 0.1s;
+    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
+    transition: 0.3s;
    }
    
    button:active span:nth-child(1) 
@@ -188,8 +188,8 @@ body {
    }
    
    button:hover {
-    box-shadow: 0 0 10px #198754, 0 0 25px #198754, 0 0 50px #198754;
-    transition-delay: 0.6s;
+    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
+    transition-delay: 0.3s;
    }
    
    button span {
@@ -206,7 +206,7 @@ body {
    
    button:hover span:nth-child(1) {
     left: 100%;
-    transition: 0.7s;
+    transition: 0.3s;
    }
    
    button span:nth-child(3) {
@@ -214,13 +214,13 @@ body {
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #8cda05);
+    background: linear-gradient(90deg, transparent, #88d405);
    }
    
    button:hover span:nth-child(3) {
     right: 100%;
-    transition: 0.7s;
-    transition-delay: 0.35s;
+    transition: 0.2s;
+    transition-delay: 0.2s;
    }
    
    button span:nth-child(2) {
@@ -228,13 +228,13 @@ body {
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #8cda05);
+    background: linear-gradient(180deg, transparent, #7cc203);
    }
    
    button:hover span:nth-child(2) {
     top: 100%;
-    transition: 0.7s;
-    transition-delay: 0.17s;
+    transition: 0.2s;
+    transition-delay: 0.2s;
    }
    
    button span:nth-child(4) {
@@ -242,21 +242,21 @@ body {
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #8cda05);
+    background: linear-gradient(360deg, transparent, #80c903);
    }
    
    button:hover span:nth-child(4) {
     bottom: 100%;
-    transition: 0.7s;
-    transition-delay: 0.52s;
+    transition: 0.2s;
+    transition-delay: 0.3s;
    }
    
    button:active {
     background: #8cda05;
     background: linear-gradient(to top right, #8cda05, #8cda05);
     color: #bfbfbf;
-    box-shadow: 0 0 8px #8cda05, 0 0 8px #8cda05, 0 0 8px #8cda05;
-    transition: 0.1s;
+    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
+    transition: 0.3s;
    }
    
    button:active span:nth-child(1) 
@@ -276,8 +276,8 @@ body {
 }
 
 .tracking-in-expand {
-  -webkit-animation: tracking-in-expand 5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  animation: tracking-in-expand 5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  -webkit-animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
 /* ----------------------------------------------
