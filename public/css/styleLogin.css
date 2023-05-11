@@ -156,10 +156,10 @@ body {
    }
    
    button:active {
-    background: #8cda05;
-    background: linear-gradient(to top right, #8cda05, #8cda05);
+    background: #198754;
+    background: linear-gradient(to top right, #198754, #198754);
     color: #bfbfbf;
-    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
+    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
     transition: 0.3s;
    }
    
@@ -252,10 +252,10 @@ body {
    }
    
    button:active {
-    background: #8cda05;
-    background: linear-gradient(to top right, #8cda05, #8cda05);
+    background: #198754;
+    background: linear-gradient(to top right, #198754, #198754);
     color: #bfbfbf;
-    box-shadow: 0 0 5px #8cda05, 0 0 5px #8cda05, 0 0 5px #8cda05;
+    box-shadow: 0 0 5px #198754, 0 0 5px #198754, 0 0 5px #198754;
     transition: 0.3s;
    }
    
@@ -276,8 +276,8 @@ body {
 }
 
 .tracking-in-expand {
-  -webkit-animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  -webkit-animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
 /* ----------------------------------------------
