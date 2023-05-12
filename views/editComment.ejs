@@ -20,41 +20,26 @@
     <div class="container">
       <div class="shadow rounded m-5 p-4" id="contenedor">
         <div class="">
-          <h3 class="text-muted">Edit article</h3>
+          <h3 class="text-muted">Editar Comentario</h3>
         </div>
         <hr />
-        <form
-          method="post"
-          enctype="multipart/form-data"
-          action="/articulos/editar/<%=article.id%>"
-          class="rounded"
-        >
-          <label for="title" class="mb-2 text-muted fw-bold">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            class="form-control mb-2"
-            value="<%= article.title%>"
-          />
-          <label for="content" class="mb-2 text-muted fw-bold">Content</label>
+        <form method="post" action="/comentarios/editar/<%=comment.id%>" class="rounded">
+          <label for="commentContent" class="mb-2 text-muted fw-bold">Comentario</label>
           <textarea
             type="text"
-            id="content"
-            name="content"
+            id="commentContent"
+            name="commentContent"
             class="form-control mb-2"
             style="resize: none; height: 300px"
           >
-<%= article.content %></textarea
+<%= comment.comment %></textarea
           >
-          <label for="image" class="mb-2 text-muted fw-bold">Image</label>
-          <input type="file" id="image" name="image" class="form-control-file mb-4" />
           <br />
           <button class="btn btn-success mb-2" type="submit">Edit</button>
         </form>
       </div>
       <div class="ms-5">
-        <a class="ms-4" href="/admin">Return</a>
+        <a class="ms-4" href="/comentarios">Return</a>
       </div>
     </div>
 

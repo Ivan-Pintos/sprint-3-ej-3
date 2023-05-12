@@ -77,7 +77,7 @@ async function register(req, res) {
 }
 
 function logout(req, res) {
-  req.session.destroy((err) => res.redirect("/"));
+  req.session.destroy((err) => res.redirect("/login"));
 }
 
 module.exports = {

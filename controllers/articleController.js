@@ -2,9 +2,7 @@ const { Article, Comment } = require("../models");
 const formidable = require("formidable");
 
 // Display a listing of the resource.
-async function index(req, res) {
-  res.render("home", (userData = false));
-}
+async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
@@ -14,12 +12,15 @@ async function show(req, res) {
   return res.render("article", { article, comments });
 }
 async function create(req, res) {
-  return res.render("newArticle");
+  if (req.user.dataValues.role != "Reader") {
+    return res.render("newArticle");
+  } else {
+    return res.redirect("/");
+  }
 }
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  console.log("okey");
   const form = formidable({
     multiples: false,
     uploadDir: __dirname + "/../public/img",
@@ -39,12 +40,21 @@ async function store(req, res) {
 
 // Show the form for editing the specified resource. Pasarle el id para que cargue
 async function edit(req, res) {
-  const articleId = req.params.id;
-  const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
-  if (req.user.dataValues.id === article.dataValues.userId) {
-    return res.render("editArticle", { article });
-  } else {
-    return res.redirect("/admin");
+  try {
+    const articleId = req.params.id;
+    const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
+    if (
+      req.user.dataValues.id === article.dataValues.userId ||
+      req.user.dataValues.role === "Admin" ||
+      req.user.dataValues.role === "Editor"
+    ) {
+      return res.render("editArticle", { article });
+    } else {
+      return res.redirect("/admin");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.redirect("/");
   }
 }
 
@@ -71,7 +81,10 @@ async function update(req, res) {
 // Remove the specified resource from storage.
 async function destroy(req, res) {
   const article = await Article.findByPk(req.params.id);
-  if (req.user.dataValues.id === article.dataValues.userId) {
+  if (
+    req.user.dataValues.id === article.dataValues.userId ||
+    req.user.dataValues.role === "Admin"
+  ) {
     await Comment.destroy({ where: { articleId: req.params.id } });
     await Article.destroy({
       where: { id: req.params.id },
@@ -81,8 +94,12 @@ async function destroy(req, res) {
 }
 
 async function showAdmin(req, res) {
-  const articles = await Article.findAll({ include: "user" });
-  res.render("admin", { articles });
+  if (req.user.dataValues.role != "Reader") {
+    const articles = await Article.findAll({ include: "user" });
+    return res.render("admin", { articles });
+  } else {
+    return res.redirect("/");
+  }
 }
 module.exports = {
   index,
