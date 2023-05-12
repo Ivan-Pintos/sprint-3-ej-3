@@ -22,11 +22,13 @@ class User extends Model {
           type: DataTypes.STRING,
         },
         role: {
-          type: DataTypes.TINYINT,
+          type: DataTypes.ENUM(["Writer", "Editor", "Reader", "Admin"]),
+          allowNull: false,
         },
         isDeleted: {
           type: DataTypes.BOOLEAN,
           defaultValue: 0,
+          allowNull: false,
         },
       },
       {

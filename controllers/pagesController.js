@@ -46,8 +46,9 @@ async function showLogin(req, res) {
 async function showRegister(req, res) {
   res.render("./register", { flash: req.flash() });
 }
+
 async function register(req, res) {
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, role } = req.body;
   try {
     const existingUser = await User.findOne({ where: { email: email } });
     if (existingUser) {
@@ -57,12 +58,15 @@ async function register(req, res) {
       );
       return res.redirect("/register");
     }
+
     await User.create({
       firstname: firstname,
       lastname: lastname,
       email: email,
       password: password,
+      role: role,
     });
+
     req.flash("success", "Registro exitoso. Inicia sesión para continuar.");
     res.redirect("/login");
   } catch (error) {
@@ -71,6 +75,7 @@ async function register(req, res) {
     res.redirect("/register");
   }
 }
+
 function logout(req, res) {
   req.session.destroy((err) => res.redirect("/"));
 }
