@@ -11,7 +11,7 @@ async function show(req, res) {
   const articleId = req.params.id;
   const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
   const comments = await Comment.findAll({ where: { articleId: articleId } });
-  return res.render("article", { article, comments, userData: false });
+  return res.render("article", { article, comments });
 }
 async function create(req, res) {
   return res.render("newArticle");
@@ -30,7 +30,7 @@ async function store(req, res) {
       title: fields.title,
       content: fields.content,
       image: files.image.newFilename,
-      authorId: fields.author,
+      userId: fields.user,
     });
 
     return res.redirect("/admin");
@@ -41,7 +41,7 @@ async function store(req, res) {
 async function edit(req, res) {
   const articleId = req.params.id;
   const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
-  if (req.user.dataValues.id === article.dataValues.authorId) {
+  if (req.user.dataValues.id === article.dataValues.userId) {
     return res.render("editArticle", { article });
   } else {
     return res.redirect("/admin");
@@ -64,16 +64,14 @@ async function update(req, res) {
       },
       { where: { id: req.params.id } },
     );
-
     const updatedArticle = await Article.findByPk(req.params.id);
-
     return res.redirect("/admin");
   });
 }
 // Remove the specified resource from storage.
 async function destroy(req, res) {
   const article = await Article.findByPk(req.params.id);
-  if (req.user.dataValues.id === article.dataValues.authorId) {
+  if (req.user.dataValues.id === article.dataValues.userId) {
     await Comment.destroy({ where: { articleId: req.params.id } });
     await Article.destroy({
       where: { id: req.params.id },
@@ -83,7 +81,7 @@ async function destroy(req, res) {
 }
 
 async function showAdmin(req, res) {
-  const articles = await Article.findAll({ include: "author" });
+  const articles = await Article.findAll({ include: "user" });
   res.render("admin", { articles });
 }
 module.exports = {

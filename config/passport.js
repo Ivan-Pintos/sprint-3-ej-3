@@ -1,12 +1,12 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
-const { Author } = require("../models");
+const { User } = require("../models");
 function passportConfig() {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
       try {
-        const user = await Author.findOne({ where: { email: email } });
+        const user = await User.findOne({ where: { email: email } });
         if (user) {
           const BDUserpassword = user.dataValues.password;
           if (await bcrypt.compare(password, BDUserpassword)) {
@@ -29,7 +29,7 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await Author.findByPk(id);
+    const user = await User.findByPk(id);
     done(null, user);
   } catch (error) {
     done(error);

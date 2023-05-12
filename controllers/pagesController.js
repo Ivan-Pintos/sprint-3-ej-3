@@ -16,14 +16,14 @@
  * no debería existir.
  */
 
-const { Article, Author } = require("../models");
+const { Article, User } = require("../models");
 
 async function showHome(req, res) {
   const articles = await Article.findAll({
     include: { all: true },
     order: [["updatedAt", "ASC"]],
   });
-  res.render("home", { articles, userData: false });
+  res.render("home", { articles });
 }
 
 async function showContact(req, res) {
@@ -49,7 +49,7 @@ async function showRegister(req, res) {
 async function register(req, res) {
   const { firstname, lastname, email, password } = req.body;
   try {
-    const existingUser = await Author.findOne({ where: { email: email } });
+    const existingUser = await User.findOne({ where: { email: email } });
     if (existingUser) {
       req.flash(
         "error",
@@ -57,7 +57,7 @@ async function register(req, res) {
       );
       return res.redirect("/register");
     }
-    await Author.create({
+    await User.create({
       firstname: firstname,
       lastname: lastname,
       email: email,

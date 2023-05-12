@@ -21,9 +21,8 @@
     >
       <h1 class="text-white text-center"><%= article.title %></h1>
       <small class="text-white">
-        <%=` Creado por ${article.author.firstname} el
-        ${article.createdAt.toLocaleDateString("es-AR", { day: 'numeric', month: 'long', year:
-        'numeric',})}` %></small
+        <%=` Creado por ${article.user.firstname} el ${article.createdAt.toLocaleDateString("es-AR",
+        { day: 'numeric', month: 'long', year: 'numeric',})}` %></small
       >
     </div>
     <div class="container">

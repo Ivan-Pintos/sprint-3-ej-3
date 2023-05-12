@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcryptjs");
-class Author extends Model {
+class User extends Model {
   static initModel(sequelize) {
-    Author.init(
+    User.init(
       {
         id: {
           type: DataTypes.BIGINT.UNSIGNED,
@@ -21,19 +21,25 @@ class Author extends Model {
         password: {
           type: DataTypes.STRING,
         },
+        role: {
+          type: DataTypes.TINYINT,
+        },
+        isDeleted: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: 0,
+        },
       },
       {
         sequelize,
-        modelName: "author",
+        modelName: "user",
       },
     );
-    Author.addHook("beforeCreate", async (author, options) => {
-      console.log(author);
-      const hashedPassword = await bcrypt.hash(author.password, 10);
-      author.password = hashedPassword;
+    User.addHook("beforeCreate", async (user, options) => {
+      const hashedPassword = await bcrypt.hash(user.password, 10);
+      user.password = hashedPassword;
     });
-    return Author;
+    return User;
   }
 }
 
-module.exports = Author;
+module.exports = User;

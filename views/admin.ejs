@@ -33,20 +33,17 @@
           </tr>
         </thead>
         <tbody>
-          <% for(const article of articles) { %>
-
+          <% for(const article of articles) { %> <% if (user.id === article.userId) { %>
           <tr>
             <td><%= article.id %></td>
             <td><%= article.title %></td>
             <td><%= article.content.slice(0, 150)+ "..." %></td>
             <td><img style="max-width: 100px" src="/img/<%= article.image %>" /></td>
             <td><%= article.createdAt %></td>
-            <td><%= article.author.firstname%> <%=article.author.lastname%></td>
+            <td><%= article.user.firstname%> <%=article.user.lastname%></td>
 
             <td>
               <div class="d-flex flex-column">
-                <!--Los botones solo aparecen si el authorID del articulo coincide con el id del usuario creado-->
-                <% if (user.id === article.authorId) { %>
                 <a
                   class="btn btn-primary mx-auto px-3 mb-1"
                   href="/articulos/editar/<%= article.id %>"
@@ -55,11 +52,10 @@
                 <form action="/articulos/admin/<%= article.id %>?_method=DELETE" method="POST">
                   <button class="btn btn-danger mx-auto px-3">Eliminar</button>
                 </form>
-                <% } %>
               </div>
             </td>
           </tr>
-          <% } %>
+          <% } %> <% } %>
         </tbody>
       </table>
       <%- include("partials/footer.ejs") %>

@@ -2,10 +2,10 @@ const { Comment } = require("../models");
 async function store(req, res) {
   const content = req.body.comentarios;
   const idArticle = req.params.id;
-  const author = req.user.dataValues.firstname;
+  const user = req.user.dataValues.firstname;
   await Comment.create({
     comment: content,
-    username: author,
+    username: user,
     articleId: idArticle,
   });
   res.redirect(`/articulos/${idArticle}`);

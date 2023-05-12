@@ -29,7 +29,7 @@
         <a class="text-decoration-none" href="/articulos/<%= article.id %>">
           <h3 class="text-dark"><%= article.title %></h3>
           <p class="text-muted">
-            <%= `Creado por ${article.author.firstname} el
+            <%= `Creado por ${article.user.firstname} el
             ${article.createdAt.toLocaleDateString("es-AR", { day: 'numeric', month: 'long', year:
             'numeric',})}` %>
           </p>
