@@ -29,7 +29,9 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findByPk(id);
+    const data = await User.findByPk(id, { include: { all: true } });
+    const permissions = await data.role.getPermissions();
+    const user = { data, permissions };
     done(null, user);
   } catch (error) {
     done(error);

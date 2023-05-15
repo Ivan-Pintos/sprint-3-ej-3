@@ -24,9 +24,9 @@
         </div>
         <hr />
         <form
-          method="post"
+          method="POST"
           enctype="multipart/form-data"
-          action="/articulos/editar/<%=article.id%>"
+          action="/articulos/editar/<%=article.id%>?_method=PATCH""
           class="rounded"
         >
           <label for="title" class="mb-2 text-muted fw-bold">Title</label>

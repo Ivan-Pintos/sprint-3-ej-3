@@ -33,7 +33,7 @@
           <hr />
           <form
             class="p-2"
-            method="<% if (user) {%>POST<% } else { %> <% } %>"
+            method="<% if (user) {%>POST<% } %>"
             action="<% if (user) {%> /comentarios/<%=article.id%> <% } else { %> /login <% } %>"
           >
             <h2>Add your comment</h2>

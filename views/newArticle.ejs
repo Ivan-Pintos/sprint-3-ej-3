@@ -23,7 +23,7 @@
           <h3 class="text-muted">New article</h3>
         </div>
         <hr />
-        <form method="POST" class="rounded" enctype="multipart/form-data" action="/articulos/crear">
+        <form method="POST" class="rounded" enctype="multipart/form-data" action="/articulos/">
           <label for="title" class="mb-2 text-muted fw-bold">Title</label>
           <input type="text" id="title" name="title" class="form-control mb-2" value="" />
           <label for="content" class="mb-2 text-muted fw-bold">Content</label>
@@ -34,9 +34,6 @@
             class="form-control mb-2"
             style="resize: none; height: 300px"
           ></textarea>
-          <label for="user" class="mb-2 text-muted fw-bold">User (Id)</label>
-          <input type="text" id="user" name="user" class="form-control mb-3" />
-
           <label for="image" class="mb-2 text-muted fw-bold">Image (URL)</label>
           <input type="file" id="newImageArticle" name="image" class="form-control-file mb-4" />
           <br />

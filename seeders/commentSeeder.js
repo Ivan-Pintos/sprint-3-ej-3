@@ -12,7 +12,7 @@ module.exports = async () => {
 
     comments.push({
       comment: faker.lorem.paragraphs(2),
-      username: faker.name.firstName(),
+      username: `${faker.name.firstName()} ${faker.name.lastName()}`,
       articleId: randomArticle.id,
     });
   }

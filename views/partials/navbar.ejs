@@ -5,11 +5,12 @@
       <% if (user) { %>
       <div class="sec-center m-2">
         <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
-        <label class="for-dropdown" for="dropdown"> Menu%> </label>
+        <label class="for-dropdown" for="dropdown"> Menu </label>
         <div class="section-dropdown">
-          <% if (user.dataValues.role != "Reader") { %>
+          <% if (user.permissions.some((permission) => permission.name === "create-article")) { %>
           <a href="/admin">Admin</a>
-          <% } %> <% if (user.dataValues.role === "Admin"|| user.dataValues.role === "Editor") { %>
+          <% } %> <% if (user.permissions.some((permission) => permission.name ===
+          "update-comment")) { %>
           <a href="/comentarios">Comentarios</a>
           <% } %>
           <a href="/logout">Logout </a>

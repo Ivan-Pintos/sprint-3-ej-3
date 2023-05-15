@@ -34,8 +34,8 @@
           </tr>
         </thead>
         <tbody>
-          <% for(const article of articles) { %> <% if (user.id === article.userId || user.role ===
-          "Admin") { %>
+          <% for(const article of articles) { %> <% if (user.data.dataValues.id === article.userId
+          || user.permissions.some((permission) => permission.name === "update-article")) { %>
           <tr>
             <td><%= article.id %></td>
             <td><%= article.title %></td>
@@ -51,9 +51,12 @@
                   href="/articulos/editar/<%= article.id %>"
                   >Editar</a
                 >
-                <form action="/articulos/admin/<%= article.id %>?_method=DELETE" method="POST">
+                <% if ( user.permissions.some((permission) => permission.name ===
+                "delete-article")){ %>
+                <form action="/articulos/<%= article.id %>?_method=DELETE" method="POST">
                   <button class="btn btn-danger mx-auto px-3 w-100">Eliminar</button>
                 </form>
+                <% } %>
               </div>
             </td>
           </tr>
