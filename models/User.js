@@ -21,10 +21,6 @@ class User extends Model {
         password: {
           type: DataTypes.STRING,
         },
-        role: {
-          type: DataTypes.ENUM(["Writer", "Editor", "Reader", "Admin"]),
-          allowNull: false,
-        },
         isDeleted: {
           type: DataTypes.BOOLEAN,
           defaultValue: 0,
