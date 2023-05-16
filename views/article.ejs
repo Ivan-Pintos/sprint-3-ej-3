@@ -31,14 +31,14 @@
         <div class="col-8 col-mb-4 m-4 mx-auto">
           <p><%=article.content %></p>
           <hr />
+          <% if (user) {%>
           <form
             class="p-2"
             method="<% if (user) {%>POST<% } %>"
-            action="<% if (user) {%> /comentarios/<%=article.id%> <% } else { %> /login <% } %>"
+            action="/comentarios/<%=article.id%>"
           >
-            <h2>Add your comment</h2>
             <div>
-              <label for="comentarios" class="form-label"></label>
+              <label for="comentarios" class="form-label"><b>Add your comment</b> </label>
               <textarea
                 type="text"
                 class="form-control form-control-lg"
@@ -48,6 +48,20 @@
             </div>
             <button type="submit" class="btn btn-primary my-3 w-100">Guardar</button>
           </form>
+          <% } else { %>
+
+          <div>
+            <label for="comentarios" class="form-label"><b>Add your comment</b> </label>
+            <textarea
+              type="text"
+              class="form-control form-control-lg"
+              name="comentarios"
+              placeholder=""
+              disabled
+            ></textarea>
+          </div>
+          <a href="/login" class="btn btn-success my-3 w-100">Login</a>
+          <% } %>
           <h3>Comments (<%= comments.length%>)</h3>
           <% for (const comment of comments){%>
           <p class="text-black">"<%= comment.comment %>"</p>

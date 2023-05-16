@@ -1,3 +1,4 @@
+const { Article } = require("../models/");
 async function hasPermissionCreateArticle(req, res, next) {
   if (req.user.permissions.some((permission) => permission.name === "create-article")) {
     console.log("Usted puede crear articulos");
@@ -26,6 +27,13 @@ async function hasPermissionDeleteComment(req, res, next) {
   }
 }
 async function hasPermissionDeleteArticle(req, res, next) {
+  if (req.user.permissions.some((permission) => permission.name === "delete-article-self")) {
+    const article = await Article.findByPk(req.params.id);
+    if (article.dataValues.userId === req.user.data.dataValues.id) {
+      console.log("Usted puede su borrar articulos");
+      return next();
+    }
+  }
   if (req.user.permissions.some((permission) => permission.name === "delete-article")) {
     console.log("Usted puede borrar articulos");
     return next();

@@ -36,7 +36,7 @@
     </div>
   </div>
 </nav>
-
+<% if (user) { %>
 <!-- Modal -->
 <div
   class="modal fade"
@@ -55,8 +55,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-danger">Borrar</button>
+        <form action="/usuarios/<%= user.data.dataValues.id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger mx-auto px-3 w-100">Eliminar</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
+<% } %>

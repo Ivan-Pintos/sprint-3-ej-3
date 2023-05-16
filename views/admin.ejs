@@ -51,8 +51,8 @@
                   href="/articulos/editar/<%= article.id %>"
                   >Editar</a
                 >
-                <% if ( user.permissions.some((permission) => permission.name ===
-                "delete-article")){ %>
+                <% if (user.data.dataValues.id === article.userId ||
+                user.permissions.some((permission) => permission.name === "delete-article")){ %>
                 <form action="/articulos/<%= article.id %>?_method=DELETE" method="POST">
                   <button class="btn btn-danger mx-auto px-3 w-100">Eliminar</button>
                 </form>

@@ -23,8 +23,6 @@ async function update(req, res) {}
 // Remove the specified resource from storage.
 async function destroy(req, res) {
   try {
-    const userBD = await User.findOne({ where: { id: req.params.id }, include: { all: true } });
-
     await Article.destroy({
       where: { userId: req.params.id },
     });
@@ -34,10 +32,10 @@ async function destroy(req, res) {
       },
       { where: { id: req.params.id } },
     );
-    // await User.destroy({
-    //   where: { id: req.params.id },
-    // });
-
+    const userBd = await User.findByPk(req.user.data.dataValues.id);
+    if (userBd.dataValues.isDeleted === true) {
+      //Hacer que el usuario que se acaba de eliminar de la base de datos cierre su session de su navegador
+    }
     return res.redirect("/usuarios");
   } catch (e) {
     console.log(e);
