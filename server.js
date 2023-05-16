@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const routes = require("./routes");
 const { passportConfig, passport } = require("./config/passport");
-const { makeUserAvailableInViews } = require("./middlewares/middleweres");
+const { makeUserAvailableInViews } = require("./middlewares/makeUserAvailableInViews");
 const methodOverride = require("method-override");
 
 const session = require("express-session");

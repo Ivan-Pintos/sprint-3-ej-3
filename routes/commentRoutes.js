@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const commentController = require("../controllers/commentController");
-const { ensureAutentication } = require("../middlewares/middleweres");
+const { ensureAutentication } = require("../middlewares/ensureAutentication");
 const {
   hasPermissionUpdateComment,
   hasPermissionDeleteComment,

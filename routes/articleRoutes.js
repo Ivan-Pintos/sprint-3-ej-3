@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const articleController = require("../controllers/articleController");
-const { ensureAutentication } = require("../middlewares/middleweres");
+const { ensureAutentication } = require("../middlewares/ensureAutentication");
 const {
   hasPermissionCreateArticle,
   hasPermissionDeleteArticle,

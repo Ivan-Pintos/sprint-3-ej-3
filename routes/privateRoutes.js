@@ -1,7 +1,7 @@
 const express = require("express");
 const articleController = require("../controllers/articleController");
 const authController = require("../controllers/authControllers");
-const { ensureAutentication } = require("../middlewares/middleweres");
+const { ensureAutentication } = require("../middlewares/ensureAutentication");
 const { hasPermissionCreateArticle } = require("../middlewares/permissions");
 const router = express.Router();
 

@@ -6,11 +6,6 @@ function ensureAutentication(req, res, next) {
     res.redirect("/login");
   }
 }
-function makeUserAvailableInViews(req, res, next) {
-  res.locals.user = req.user;
-  return next();
-}
 module.exports = {
   ensureAutentication,
-  makeUserAvailableInViews,
 };
