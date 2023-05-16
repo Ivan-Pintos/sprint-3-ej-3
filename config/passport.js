@@ -10,6 +10,9 @@ function passportConfig() {
         if (user) {
           const BDUserpassword = user.dataValues.password;
           if (await bcrypt.compare(password, BDUserpassword)) {
+            if (user.dataValues.isDeleted === true) {
+              return done(null, false, { message: "Este usuario ha sido eliminado" });
+            }
             return done(null, user);
           } else {
             return done(null, false, { message: "Contraseña Incorrecta :(" });

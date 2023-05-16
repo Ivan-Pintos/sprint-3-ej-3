@@ -7,16 +7,22 @@
         <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
         <label class="for-dropdown" for="dropdown"> Menu </label>
         <div class="section-dropdown">
+          <div class="border-white w-100 border-bottom p-2">
+            <span class="text-white"
+              ><%= user.data.dataValues.firstname %> <%= user.data.dataValues.lastname %></span
+            >
+          </div>
           <% if (user.permissions.some((permission) => permission.name === "create-article")) { %>
           <a href="/admin">Admin</a>
           <% } %> <% if (user.permissions.some((permission) => permission.name ===
           "update-comment")) { %>
           <a href="/comentarios">Comentarios</a>
-          <% } %>
+          <% } %><% if (user.permissions.some((permission) => permission.name === "delete-user")) {
+          %><a href="/usuarios">Usuarios</a> <% } %>
           <a href="/logout">Logout </a>
           <button
             type="button"
-            class="btn btn-dark w-100"
+            class="btn btn-danger w-100"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >

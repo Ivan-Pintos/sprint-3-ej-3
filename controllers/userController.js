@@ -1,6 +1,9 @@
 const { User, Article } = require("../models");
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  const users = await User.findAll({ include: { all: true } });
+  return res.render("user", { users });
+}
 
 // Display the specified resource.
 async function show(req, res) {}
@@ -21,21 +24,21 @@ async function update(req, res) {}
 async function destroy(req, res) {
   try {
     const userBD = await User.findOne({ where: { id: req.params.id }, include: { all: true } });
-    if (req.user.dataValues.role === "Admin" || userBD.dataValues.id === req.params.id) {
-      await Article.destroy({
-        where: { id: req.params.id },
-      });
-      await Article.update(
-        {
-          isDeleted: true,
-        },
-        { where: { id: req.params.id } },
-      );
-      // await User.destroy({
-      //   where: { id: req.params.id },
-      // });
-    }
-    return res.redirect("/");
+
+    await Article.destroy({
+      where: { userId: req.params.id },
+    });
+    await User.update(
+      {
+        isDeleted: true,
+      },
+      { where: { id: req.params.id } },
+    );
+    // await User.destroy({
+    //   where: { id: req.params.id },
+    // });
+
+    return res.redirect("/usuarios");
   } catch (e) {
     console.log(e);
     return res.redirect("/");

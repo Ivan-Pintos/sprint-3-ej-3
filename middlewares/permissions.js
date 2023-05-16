@@ -43,10 +43,20 @@ async function hasPermissionUpdateArticle(req, res, next) {
     return res.redirect("/admin");
   }
 }
+async function hasPermissionDeleteUser(req, res, next) {
+  if (req.user.permissions.some((permission) => permission.name === "delete-user")) {
+    console.log("Usted puede borrar usuarios");
+    return next();
+  } else {
+    console.log("Usted no puede borrar usuarios");
+    return res.redirect("/admin");
+  }
+}
 module.exports = {
   hasPermissionCreateArticle,
   hasPermissionUpdateComment,
   hasPermissionDeleteComment,
   hasPermissionDeleteArticle,
   hasPermissionUpdateArticle,
+  hasPermissionDeleteUser,
 };
