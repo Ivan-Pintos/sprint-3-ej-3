@@ -41,9 +41,8 @@ async function edit(req, res) {
   try {
     const articleId = req.params.id;
     const article = await Article.findOne({ where: { id: articleId }, include: { all: true } });
-    return res.render("editArticle", { artcle });
+    return res.render("editArticle", { article });
   } catch (error) {
-    i;
     console.log(error);
     return res.redirect("/");
   }
