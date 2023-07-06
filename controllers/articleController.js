@@ -1,5 +1,6 @@
 const { Article, Comment } = require("../models");
 const formidable = require("formidable");
+const { format } = require("date-fns");
 
 // Display the specified resource.
 async function show(req, res) {
@@ -68,7 +69,7 @@ async function update(req, res) {
     return res.redirect("/admin");
   });
 }
-// Remove the specified resource from storage.
+
 async function destroy(req, res) {
   await Comment.destroy({ where: { articleId: req.params.id } });
   await Article.destroy({
@@ -79,8 +80,14 @@ async function destroy(req, res) {
 
 async function showAdmin(req, res) {
   const articles = await Article.findAll({ include: "user" });
-  return res.render("admin", { articles });
+
+  const formattedArticles = articles.map((article) => ({
+    ...article.toJSON(),
+    createdAt: format(new Date(article.createdAt), "dd/MM/yyyy HH:mm:ss"),
+  }));
+  return res.render("admin", { articles: formattedArticles });
 }
+
 module.exports = {
   show,
   create,
